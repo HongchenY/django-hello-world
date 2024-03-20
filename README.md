@@ -1,30 +1,38 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+# Defang x Django
 
-# Django + Vercel
+This template is a simple "Hello World" project developed using Django. It is ready to be deployed via Defang. You could download Defang by following the instructions at this link (https://github.com/defang-io/defang).
 
-This example shows how to use Django 4 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+Once Defang has been properly installed, you could directly launch this template project to the world with a single command.
 
-## Demo
+# How to Deploy it to the WORLD?
+1. Go to this link (https://github.com/defang-io/defang) and download Defang by following the instructions.
+2. Open terminal and make sure that you are in the correct directory.
+3. If you haven't logged in, type `defang login` and click the link provided to login/register.
+4. Once you have logged in, type `defang compose up`
+5. Click the URL provided; it would typically take a few minutes for the page to reveal.
+6. Now, the world could see your work.
 
-https://django-template.vercel.app/
+# What is Needed for a Successful Deployment?
+1. Make sure your code works. If your code fails locally, it will not be successfully deployed.
+2. Defang requires a Dockerfile, and a docker-compose file to deploy your code. Make sure your containers are correct.
+3. If you are using Defang playground, build a .dockerignore file to comply with the usage limit.
+For detailed instructions, please go to (https://docs.defang.io/docs/intro)
 
-## How it Works
+# Use Your Own Cloud Accounts to Deploy
+Defang's goal is to make it easier to deploy your workloads to your own cloud accounts. We refer to this as bring-your-own-cloud (BYOC).
+You could use your own credits from platforms like AWS, Azure, etc to deploy your applications.
+For detailed instuctions of BYOC, please go to (https://docs.defang.io/docs/concepts/defang-byoc)
 
-Our Django application, `example` is configured as an installed application in `vercel_app/settings.py`:
+
+# How this Template Works
+Our Django application, `example` is configured as an installed application in `defang_app/settings.py`:
 
 ```python
-# vercel_app/settings.py
+# defang_app/settings.py
 INSTALLED_APPS = [
     # ...
     'example',
 ]
-```
-
-We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
-
-```python
-# vercel_app/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 ```
 
 The `wsgi` module must use a public variable named `app` to expose the WSGI application:
@@ -38,7 +46,7 @@ The corresponding `WSGI_APPLICATION` setting is configured to use the `app` vari
 
 ```python
 # vercel_app/settings.py
-WSGI_APPLICATION = 'vercel_app.wsgi.app'
+WSGI_APPLICATION = 'defang_app.wsgi.app'
 ```
 
 There is a single view which renders the current time in `example/views.py`:
@@ -55,7 +63,7 @@ def index(request):
     html = f'''
     <html>
         <body>
-            <h1>Hello from Vercel!</h1>
+            <h1>Defang says: Hello World!</h1>
             <p>The current time is { now }.</p>
         </body>
     </html>
@@ -77,7 +85,7 @@ urlpatterns = [
 ]
 ```
 
-Finally, it's made accessible to the Django server inside `vercel_app/urls.py`:
+Finally, it's made accessible to the Django server inside `defang_app/urls.py`:
 
 ```python
 # vercel_app/urls.py
@@ -93,14 +101,13 @@ This example uses the Web Server Gateway Interface (WSGI) with Django to enable 
 
 ## Running Locally
 
+If you want to run it before deploying it to the internet, use the following command.
+
 ```bash
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Your Django application is now available at `http://localhost:8000`.
 
-## One-Click Deploy
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
